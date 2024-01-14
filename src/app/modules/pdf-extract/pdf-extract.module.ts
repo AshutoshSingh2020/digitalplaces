@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { PdfExtractRoutingModule } from './pdf-extract-routing.module';
 import { PdfExtractComponent } from './pdf-extract.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { PdfExtractComponent } from './pdf-extract.component';
   ],
   imports: [
     CommonModule,
-    PdfExtractRoutingModule
+    PdfExtractRoutingModule,
+    SharedModule
   ]
 })
 export class PdfExtractModule { }

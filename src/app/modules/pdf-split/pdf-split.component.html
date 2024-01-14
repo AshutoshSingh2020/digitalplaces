@@ -1,28 +1,32 @@
-<div>
+<!-- <div>
     <input type="file" (change)="onFileSelected($event)" />
     <br />
-    <label>Page Range (comma-separated): </label>
-    <input type="text" [(ngModel)]="pageRange" >
+  
     <br />
     <button (click)="splitPDF()">Split PDF</button>
     <br />
-    <!-- <div *ngFor="let page of splitPages">
-      
-      {{ page.getText() }}
-    </div> -->
-
-    <!-- <ngx-extended-pdf-viewer
-    [src]="'path-to-your-pdf-file.pdf'"
-    style="display: block; height: 500px;"
-    (pdfLoaded)="onPdfLoaded($event)"
-  ></ngx-extended-pdf-viewer>
-  <div *ngIf="numPages > 0">
-    <p>Total Pages: {{ numPages }}</p>
-    <div *ngFor="let page of pagesArray">
-      <ngx-extended-pdf-viewer
-        [src]="'path-to-your-pdf-file.pdf'"
-        [page]="page"
-        style="display: block; height: 500px;"
-      ></ngx-extended-pdf-viewer> -->
       <pdf-viewer [src]="this.link"></pdf-viewer>
-  </div>
+  </div> -->
+
+  <div class="container">  
+    <app-choose-file (sendForm)="onFileSelected($event)"></app-choose-file>
+    <label>Page Range (comma-separated): </label>
+    <input type="text" [(ngModel)]="pageRange" >
+        <button class="btn" (click)="extractAllPages()">Extract PDF</button>
+    </div>
+
+    
+    <ng-container *ngIf="pdfSrc">
+        <div class="pdfContainer">
+
+            <ng-container *ngFor="let item of pdfPages">
+                
+                <div class="pdfView">
+                    <pdf-viewer [src]="pdfSrc" [rotation]="180"  [render-text]="true" [page]="item+1" [original-size]="false" [fit-to-page]="true"
+                    style="width:100%; height: 100%;" [show-all]="false" (after-load-complete)="afterLoadComplete($event)" [show-borders]="true" >
+                </pdf-viewer>
+            </div>
+        </ng-container> 
+    </div>
+    
+    </ng-container>

@@ -1,0 +1,32 @@
+.pdfContainer {
+    display: flex;
+    flex-wrap: wrap; 
+  }
+  
+  .pdfView {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column; 
+    overflow: hidden; 
+    margin: 10px; 
+  }
+  
+  .pdfView pdf-viewer {
+    width: 100%;
+    height: 100%; 
+  }
+  
+  :host ::ng-deep .ng2-pdf-viewer-container {
+    overflow: hidden !important; 
+    width: 100% !important;
+    height: 100% !important;
+    border: 1px solid whitesmoke !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    box-sizing: border-box;
+  }
+  
+  :host ::ng-deep .ng2-pdf-viewer-container::-webkit-scrollbar {
+    display: none !important; 
+  }
+  

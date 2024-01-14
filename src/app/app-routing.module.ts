@@ -38,6 +38,10 @@ const routes: Routes = [
           {
             path:'pdf-remove',
             loadChildren:()=>import('./modules/pdf-remove-page/pdf-remove-page.module').then(m=>m.PdfRemovePageModule),
+          },
+          {
+            path:'pdf-extract',
+            loadChildren:()=>import('./modules/pdf-extract/pdf-extract.module').then(m=>m.PdfExtractModule),
           }
          
         
