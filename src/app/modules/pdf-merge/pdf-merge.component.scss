@@ -1,32 +1,32 @@
 .pdfContainer {
     display: flex;
-    flex-wrap: wrap; /* Allow items to wrap to the next row */
+    flex-wrap: wrap; 
   }
   
   .pdfView {
     width: 200px;
     height: 200px;
     display: flex;
-    flex-direction: column; /* Display items in a column */
-    overflow: hidden; /* Hide any content that overflows the container */
-    margin: 10px; /* Add margin to create space between items */
+    flex-direction: column; 
+    overflow: hidden; 
+    margin: 10px; 
   }
   
   .pdfView pdf-viewer {
-    width: 100%; /* Take up 100% of the container's width */
-    height: 100%; /* Take up 100% of the container's height */
+    width: 100%;
+    height: 100%; 
   }
   
   :host ::ng-deep .ng2-pdf-viewer-container {
-    overflow: hidden !important; /* Hide any content that overflows the container */
+    overflow: hidden !important; 
     width: 100% !important;
     height: 100% !important;
     border: 1px solid whitesmoke !important;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
-    box-sizing: border-box; /* Include border in the total width/height */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    box-sizing: border-box;
   }
   
   :host ::ng-deep .ng2-pdf-viewer-container::-webkit-scrollbar {
-    display: none !important; /* Hide the scrollbar in WebKit browsers (e.g., Chrome, Safari) */
+    display: none !important; 
   }
   

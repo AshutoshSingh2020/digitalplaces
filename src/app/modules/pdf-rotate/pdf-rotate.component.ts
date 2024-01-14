@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { PDFDocument, degrees } from 'pdf-lib';
 import { PDFDocumentProxy } from 'ng2-pdf-viewer';
+import { formatNumber } from '@angular/common';
 @Component({
   selector: 'app-pdf-rotate',
   templateUrl: './pdf-rotate.component.html',
@@ -44,7 +45,7 @@ export class PdfRotateComponent implements OnInit {
     }
   
     try {
-      this.mergedPdfData = await this.mergePdfs(...pdfDataArray);
+      this.mergedPdfData = await this.rotatePdf(...pdfDataArray);
   
       const blob = new Blob([this.mergedPdfData], { type: 'application/pdf' });
       const dataUrl = URL.createObjectURL(blob);
@@ -73,7 +74,7 @@ export class PdfRotateComponent implements OnInit {
     });
   }
   
-  async mergePdfs(...pdfDataArray: Uint8Array[]): Promise<Uint8Array> {
+  async rotatePdf(...pdfDataArray: Uint8Array[]): Promise<Uint8Array> {
     try {
       
          this.mergedPdf = await PDFDocument.create();
@@ -99,7 +100,7 @@ export class PdfRotateComponent implements OnInit {
       throw error;
     }
   }
- async megedPDF(){
+ async rotatingPdf(){
     if (this.rotationArray.length > 0) {
       let pageIndicesToModify = this.rotationArray.map(item => item.rotate);
      
@@ -128,11 +129,10 @@ export class PdfRotateComponent implements OnInit {
 
 
  async downLoad(){this
-    
     const blob = new Blob([this.mergedPdfData], { type: 'application/pdf' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = 'merged.pdf';
+    link.download = 'rotate.pdf';
     this.link = link.href;
     link.click();
   }
@@ -149,8 +149,13 @@ export class PdfRotateComponent implements OnInit {
   addRotationInfo(rotate: number, degree: number): void {
     this.rotationArray.push({ rotate,degree });
   }
-
+ 
   afterLoadComplete(pdf: PDFDocumentProxy) {
+  }
+  rotatesAllPages(){
+    for(let item of this.pdfPages){
+      this.rotatePage(item);
+    }
   }
 }
 
