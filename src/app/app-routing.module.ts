@@ -43,6 +43,21 @@ const routes: Routes = [
             path:'pdf-extract',
             loadChildren:()=>import('./modules/pdf-extract/pdf-extract.module').then(m=>m.PdfExtractModule),
           }
+          ,
+          {
+            path:'image-to-pdf',
+            loadChildren:()=>import('./modules/image-pdf/image-pdf.module').then(m=>m.ImagePdfModule),
+          }
+          ,
+          {
+            path:'convert-pdf',
+            loadChildren:()=>import('./modules/convert-pdf/convert-pdf.module').then(m=>m.ConvertPdfModule),
+          }
+          ,
+          {
+            path:'pdf-convert',
+            loadChildren:()=>import('./modules/pdf-convert/pdf-convert.module').then(m=>m.PdfConvertModule),
+          }
          
         
   ]

@@ -1,0 +1,16 @@
+<div>
+    <input type="file" (change)="onFileSelected($event)" accept="image/*" multiple/>
+    <button (click)="convertToPdf()">Convert to PDF</button>
+  </div>
+  @if(imageUrls){
+    @for (item of imageUrls; track item) {
+        <div #contentToConvert>
+        <img [src]="item" alt="images">
+      </div>
+      } @empty {
+       No Image
+      }
+      
+       
+    }
+  

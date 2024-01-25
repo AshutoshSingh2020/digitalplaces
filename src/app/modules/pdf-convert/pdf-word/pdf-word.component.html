@@ -1,0 +1,5 @@
+<form [formGroup]="pdfForm">
+    <input type="file" formControlName="pdf" (change)="onFileSelected($event)" />
+    <button type="button" (click)="onFileSelected($event)">Upload</button>
+  </form>
+  
