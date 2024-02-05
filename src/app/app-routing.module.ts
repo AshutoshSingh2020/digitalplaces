@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './main/main.component';
 import { PdfToImageComponent } from './modules/pdf-to-image/pdf-to-image.component';
+import { PdfProtectComponent } from './modules/pdf-protect/pdf-protect.component';
 
 const routes: Routes = [
 {
@@ -57,6 +58,10 @@ const routes: Routes = [
           {
             path:'pdf-convert',
             loadChildren:()=>import('./modules/pdf-convert/pdf-convert.module').then(m=>m.PdfConvertModule),
+          },
+          {
+            path:'pdf-protect',
+            component:PdfProtectComponent
           }
          
         

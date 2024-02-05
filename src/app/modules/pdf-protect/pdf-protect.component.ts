@@ -1,22 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { PDFDocument, degrees } from 'pdf-lib';
+import { PDFDocument, PDFObject, degrees } from 'pdf-lib';
 import { PDFDocumentProxy } from 'ng2-pdf-viewer';
-import {CdkDragDrop, CdkDrag, CdkDropList, moveItemInArray} from '@angular/cdk/drag-drop';
+
 @Component({
-  selector: 'app-pdf-merge',
-  templateUrl: './pdf-merge.component.html',
-  styleUrls: ['./pdf-merge.component.scss']
+  selector: 'app-pdf-protect',
+  templateUrl: './pdf-protect.component.html',
+  styleUrl: './pdf-protect.component.scss'
 })
-export class PdfMergeComponent implements OnInit{
-  timePeriods = [
-    'Bronze age',
-    'Iron age',
-    'Middle ages',
-    'Early modern period',
-    'Long nineteenth century',
-  ];
+export class PdfProtectComponent {
   pdfMerge !:FormGroup;
   selectedFile!: File  ;
   selectedFile1!: File ;
@@ -87,12 +80,15 @@ export class PdfMergeComponent implements OnInit{
          this.mergedPdf = await PDFDocument.create();
     
         for (const pdfData of pdfDataArray) {
-          let pdfDoc = await PDFDocument.load(pdfData);
+          let pdfDoc = await PDFDocument.load(pdfData,{ignoreEncryption:true});
+          // console.log(pdfDoc.context.enumerateIndirectObjects());
           let pages = await this.mergedPdf.copyPages(pdfDoc, pdfDoc.getPageIndices());
-    
           for (let page of pages) {
+            console.log(page);
+            
             this.mergedPdf.addPage(page);
           }
+          
         }
 
 
@@ -177,7 +173,5 @@ export class PdfMergeComponent implements OnInit{
   }
   afterLoadComplete(pdf: PDFDocumentProxy) {
   }
-  drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.pdfPages, event.previousIndex, event.currentIndex);
-  }
+
 }

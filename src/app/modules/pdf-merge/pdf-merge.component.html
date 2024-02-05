@@ -11,11 +11,11 @@
 </ng-container>
 
 <ng-container *ngIf="pdfSrc">
-    <div class="pdfContainer">
+    <div class="pdfContainer example-list"  cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
 <!-- {{pdfPages}} -->
         <ng-container *ngFor="let item of pdfPages">
             
-            <div class="pdfView">
+            <div class="pdfView example-box"  cdkDrag>
                 <button (click)="rotatePage(item)">rot</button>
                 <button (click)="removePage(item)">{{removeArray.includes(item)?'Remove':'remoed'}}</button>
                 <pdf-viewer [src]="pdfSrc" [rotation]="180"  [render-text]="true" [page]="item+1" [original-size]="false" [fit-to-page]="true"

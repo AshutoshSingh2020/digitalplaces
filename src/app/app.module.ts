@@ -16,6 +16,7 @@ import { PdfToImageComponent } from './modules/pdf-to-image/pdf-to-image.compone
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
+import { PdfProtectComponent } from './modules/pdf-protect/pdf-protect.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { SharedModule } from './shared/shared.module';
     HeaderComponent,
     OpenDialogComponent,
     PdfToImageComponent,
+    PdfProtectComponent,
     
   ],
   imports: [

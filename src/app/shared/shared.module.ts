@@ -17,6 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { DragAndDropDirective } from './drag-and-drop-directive/drag-and-drop.directive';
 import { FeatherModule } from 'angular-feather';
 import * as all from 'angular-feather/icons';
+import {CdkDragDrop, CdkDrag, CdkDropList, moveItemInArray, DragDropModule} from '@angular/cdk/drag-drop';
 const icons = {
  ...all,
 };
@@ -32,9 +33,11 @@ const icons = {
     ReactiveFormsModule,
     HttpClientModule,
     PdfViewerModule,
-   
+   DragDropModule,
     // FeatherModule.pick(icons),
-
+CdkDropList,
+CdkDrag,
+  
     MatRippleModule,
     MatSnackBarModule,
     MatNativeDateModule,
@@ -52,6 +55,8 @@ const icons = {
     ReactiveFormsModule,
     HttpClientModule,
     PdfViewerModule,
+    CdkDropList,
+CdkDrag,
     // FeatherModule,
     MatRippleModule,
     MatSnackBarModule,
